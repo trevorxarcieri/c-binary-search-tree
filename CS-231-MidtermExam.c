@@ -47,6 +47,14 @@ int main(int argc, char *argv[]) {
     // Print the BST in inorder traversal
     printf("BST in inorder traversal: ");
     printBST(&bst, "inorder");
+    
+    // Print the BST in preorder traversal
+    printf("BST in preorder traversal: ");
+    printBST(&bst, "preorder");
+
+    // Print the BST in postorder traversal
+    printf("BST in postorder traversal: ");
+    printBST(&bst, "postorder");
 
     // Query and print the min and max values
     int min, max;

@@ -53,23 +53,41 @@ BSTNode *searchKey(BinarySearchTree *bst, int key) {
     return NULL; // Key not found
 }
 
-// Helper function for printing BST
-void printBSTInOrder(BSTNode *node) {
+// Helper functions for different traversal orders
+void printInOrder(BSTNode *node) {
     if (node != NULL) {
-        printBSTInOrder(node->left);
+        printInOrder(node->left);
         printf("%d ", node->key);
-        printBSTInOrder(node->right);
+        printInOrder(node->right);
     }
 }
 
-// Print the BST
-void printBST(BinarySearchTree *bst, char *order) {
-    if (bst->root == NULL) return;
-    if (strcmp(order, "inorder") == 0) {
-        printBSTInOrder(bst->root);
-        printf("\n");
+void printPreOrder(BSTNode *node) {
+    if (node != NULL) {
+        printf("%d ", node->key);
+        printPreOrder(node->left);
+        printPreOrder(node->right);
     }
-    // Add support for other orders if necessary
+}
+
+void printPostOrder(BSTNode *node) {
+    if (node != NULL) {
+        printPostOrder(node->left);
+        printPostOrder(node->right);
+        printf("%d ", node->key);
+    }
+}
+
+// Print the BST based on the traversal mode
+void printBST(BinarySearchTree *bst, const char *order) {
+    if (strcmp(order, "inorder") == 0) {
+        printInOrder(bst->root);
+    } else if (strcmp(order, "preorder") == 0) {
+        printPreOrder(bst->root);
+    } else if (strcmp(order, "postorder") == 0) {
+        printPostOrder(bst->root);
+    }
+    printf("\n");
 }
 
 // Query the maximum and minimum key in the BST
@@ -93,4 +111,3 @@ void queryMinMax(BinarySearchTree *bst, int *min, int *max) {
 }
 
 #endif
-
