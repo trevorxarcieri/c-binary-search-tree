@@ -58,6 +58,15 @@ BSTNode *searchKey(BinarySearchTree *bst, int key) {
     return NULL; // Key not found
 }
 
+// Recursively frees nodes of the BST
+void freeBST(BSTNode *node) {
+    if (node != NULL) {
+        freeBST(node->left);  // Free the left subtree
+        freeBST(node->right); // Free the right subtree
+        free(node);           // Free the current node
+    }
+}
+
 // Recursive function to print nodes in inorder
 void printInOrder(BSTNode *node) {
     if (node != NULL) {

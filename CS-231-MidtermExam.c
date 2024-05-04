@@ -87,5 +87,8 @@ int main(int argc, char *argv[]) {
     printf("Minimum key: %d\n", min);
     printf("Maximum key: %d\n", max);
 
+    // Free the BST before exiting
+    freeBST(bst.root);
+
     return 0; // Exit the program
 }
