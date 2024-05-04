@@ -18,7 +18,7 @@ if [ "$min" -ge "$max" ]; then
 fi
 
 # Generate random numbers with a comma and a space as separators
-nums=$(for i in $(seq 1 $num_numbers); do echo -n "$((RANDOM % ($max - $min + 1) + $min))"; if [ "$i" -lt "$num_numbers" ]; then echo -n ", "; fi; done)
+nums=$(for i in $(seq 1 $num_numbers); do echo -n "$((RANDOM % ($max - $min + 1) + $min))"; if [ "$i" -lt "$num_numbers" ]; then echo -n " "; fi; done)
 
 # Save to file
 echo $nums > nums.txt
