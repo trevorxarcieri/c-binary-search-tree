@@ -1,4 +1,5 @@
 #include "IntegerBST.h"
+#include <assert.h>
 #include <string.h>
 
 // Comparison functions
@@ -34,14 +35,25 @@ int compareByDigitReverse(int a, int b) {
 
 int main(int argc, char *argv[]) {
     BinarySearchTree bst;
+    assert(&bst != NULL);   // Verify BST declaration
     initializeBST(&bst, compareByValue);  // Default comparison function
+    assert(bst.root == NULL && bst.nodeCount == 0 && bst.compare != NULL); // Verify BST initialization
 
+    int *testKey = NULL;
     // Insert integers provided as command line arguments
     for (int i = 1; i < argc; i++) {
         int key = atoi(argv[i]);
+        if (i == 1) {
+            testKey = &key;
+        }
+
         if (insertKey(&bst, key) != 0) {
             printf("Error inserting key: %d\n", key);
         }
+    }
+    
+    if (testKey != NULL) {
+        assert(searchKey(&bst, *testKey)); // Verify searchKey functionality
     }
 
     // Print the BST in inorder traversal
@@ -64,4 +76,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-
